@@ -34,8 +34,22 @@
 from typing import List
 
 
-def longest_common_prefix(self, strs: List[str]) -> str:
-    pass
+def longest_common_prefix(strs: List[str]) -> str:
+    prefix = ""
+    for i in range(len(min(strs))):
+        letter = strs[0][i]
+        for s in strs:
+            if s[i] != letter:
+                return prefix
+        prefix += letter
+    return prefix
+
+
+# n = array length
+# m = word length
+# Complexity: O(n*m)
+
+# Alternative solutions in https://leetcode.com/problems/longest-common-prefix/solutions/127449/longest-common-prefix/
 
 
 #########
@@ -44,4 +58,5 @@ def longest_common_prefix(self, strs: List[str]) -> str:
 
 assert longest_common_prefix(["flower", "flow", "flight"]) == "fl"
 assert longest_common_prefix(["dog", "racecar", "car"]) == ""
+assert longest_common_prefix(["", "blabla", "bla", "blu"]) == ""
 print("All tests passed :)")
